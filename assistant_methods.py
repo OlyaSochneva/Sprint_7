@@ -3,6 +3,32 @@ import random
 from datetime import date, timedelta
 
 
+def order_payload():  # без указания цвета
+    payload = {
+        "firstName": generate_random_string(5),
+        "lastName": generate_random_string(5),
+        "address": generate_random_string(5),
+        "metroStation": choose_random_station(),
+        "phone": generate_phone_number(),
+        "rentTime": choose_random_rent_time(),
+        "deliveryDate": choose_random_delivery_date(),
+        "comment": generate_random_string(5)
+    }
+    return payload
+
+
+def new_courier_payload():
+    login = generate_random_string(5)
+    password = generate_random_string(5)
+    first_name = generate_random_string(5)
+    payload = {
+        "login": login,
+        "password": password,
+        "firstName": first_name
+    }
+    return payload
+
+
 def generate_random_string(length):
     letters = string.ascii_lowercase
     random_string = ''.join(random.choice(letters) for i in range(length))
@@ -39,5 +65,3 @@ def generate_random_id_or_track():
     for i in range(7):
         random_id += random.choice(string.digits)
     return random_id
-
-
